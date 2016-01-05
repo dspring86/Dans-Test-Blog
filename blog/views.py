@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Post
 
 def post_list(request):
-    return render(request, 'blog/post_list.html', {})
+    posts = Post.objects.filter(title__contains='Test')
+    return render(request, 'blog/post_list.html', {'posts': posts})
 
